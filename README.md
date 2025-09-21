@@ -19,4 +19,15 @@
 <p>❌ O remetente deve informar o caminho do arquivo e o programa cliente deve ler os bytes do arquivo e enviá-los via socket;</p>
 <p>❌ O destinatário deve gravar os bytes recebidos com o nome original do arquivo no diretório corrente onde o programa foi executado;</p>
   
-<h3>O trabalho pode ser feito em equipes de até 4 integrantes. O trabalho representa 30% da nota do semestre. O trabalho deve ser entregue pelo Moodle e prazo de entrega é 26/09.</h3>
+<strong>O trabalho pode ser feito em equipes de até 4 integrantes. O trabalho representa 30% da nota do semestre. O trabalho deve ser entregue pelo Moodle e prazo de entrega é 26/09.</strong>
+
+
+<h2>Para rodar</h2>
+
+<code>javac ChatServer.java ClientHandler.java</code>
+<p/>
+<code>java com.chatapp.server.ChatServer</code>
+<p>para entrar como usuário: </p>
+<code>javac com/chatapp/client/ChatClient.java</code>
+<p/>
+<code>java com.chatapp.client.ChatClient</code>
