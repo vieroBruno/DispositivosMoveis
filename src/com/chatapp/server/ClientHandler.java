@@ -4,16 +4,15 @@ import java.io.*;
 import java.net.Socket;
 import java.util.Scanner;
 
-/**
- * Classe que gerencia a comunicação com um cliente específico.
- */
 public class ClientHandler extends Thread {
     private Socket socket;
     private String nome;
     private PrintWriter saida;
+    private ServerLogger logger;
 
-    public ClientHandler(Socket socket) {
+    public ClientHandler(Socket socket, ServerLogger logger) {
         this.socket = socket;
+        this.logger = logger;
     }
 
     @Override
@@ -26,6 +25,7 @@ public class ClientHandler extends Thread {
                 nome = entrada.nextLine();
                 ChatServer.clientes.put(nome, this);
                 System.out.println("Cliente conectado: " + nome);
+                logger.logClientConnection(nome, socket.getInetAddress().getHostAddress());
             }
 
             String mensagem;
@@ -85,6 +85,7 @@ public class ClientHandler extends Thread {
             if (nome != null) {
                 ChatServer.clientes.remove(nome);
                 System.out.println("Cliente desconectado: " + nome);
+                logger.logClientDisconnection(nome);
             }
             socket.close();
         } catch (IOException e) {
