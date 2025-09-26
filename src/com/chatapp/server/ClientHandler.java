@@ -13,7 +13,6 @@ public class ClientHandler extends Thread {
     private ObjectInputStream entrada;
     private ServerLogger logger;
 
-
     public ClientHandler(Socket socket, ServerLogger logger) {
         this.socket = socket;
         this.logger = logger;
@@ -25,7 +24,6 @@ public class ClientHandler extends Thread {
             saida = new ObjectOutputStream(socket.getOutputStream());
             entrada = new ObjectInputStream(socket.getInputStream());
 
-            // Primeiro objeto recebido deve ser o nome do cliente
             nome = (String) entrada.readObject();
             ChatServer.clientes.put(nome, this);
 
@@ -51,7 +49,6 @@ public class ClientHandler extends Thread {
         }
     }
 
-
     private void processarMensagemTexto(Message msg) {
         if (msg.getConteudo().equalsIgnoreCase("/sair")) {
             encerrarConexao();
@@ -62,9 +59,11 @@ public class ClientHandler extends Thread {
             if (destino != null) {
                 destino.enviarMensagem(msg);
             } else {
-                enviarMensagem(new Message(Message.Type.TEXT, "Servidor", nome) {{
-                    setConteudo("Usuário não encontrado: " + msg.getDestinatario());
-                }});
+                enviarMensagem(new Message(Message.Type.TEXT, "Servidor", nome) {
+                    {
+                        setConteudo("Usuário não encontrado: " + msg.getDestinatario());
+                    }
+                });
             }
         }
     }
@@ -74,9 +73,11 @@ public class ClientHandler extends Thread {
         if (destino != null) {
             destino.enviarMensagem(msg);
         } else {
-            enviarMensagem(new Message(Message.Type.TEXT, "Servidor", nome) {{
-                setConteudo("Usuário não encontrado para envio de arquivo: " + msg.getDestinatario());
-            }});
+            enviarMensagem(new Message(Message.Type.TEXT, "Servidor", nome) {
+                {
+                    setConteudo("Usuário não encontrado para envio de arquivo: " + msg.getDestinatario());
+                }
+            });
         }
     }
 
