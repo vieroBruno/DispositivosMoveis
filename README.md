@@ -21,11 +21,11 @@
   
 <strong>O trabalho pode ser feito em equipes de até 4 integrantes. O trabalho representa 30% da nota do semestre. O trabalho deve ser entregue pelo Moodle e prazo de entrega é 26/09.</strong>
 
-<h2>Antes de rodar os camandos do servidor e cliente deve-se compilar o projeto </h2>
-<code>javac com/chatapp/common/*.java com/chatapp/server/*.java com/chatapp/client/*.java</code>
+<strong>Antes de rodar os camandos do servidor e cliente deve-se compilar o projeto </strong>
+
 <h2>Para rodar</h2>
 
-<code>javac ChatServer.java ClientHandler.java ServerLogger.java</code>
+<code>javac com/chatapp/common/*.java com/chatapp/server/*.java com/chatapp/client/*.java</code>
 <p/>
 <code>java com.chatapp.server.ChatServer</code>
 <p>para entrar como usuário: </p>
