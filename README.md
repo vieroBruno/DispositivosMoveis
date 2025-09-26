@@ -6,7 +6,7 @@
 <p>✅ O servidor deve ser responsável apenas por rotear as mensagens entre os clientes;</p>
 <p>❌ Os clientes devem ser capazes de enviar e receber mensagens de texto ou arquivos;</p>
 <p>✅ A qualquer momento o cliente pode finalizar a comunicação ao informar o comando /sair; e</p>
-<p>❌ O servidor deve manter um log em arquivo dos clientes que se conectaram, contendo os endereços IP e a data e hora de conexão.</p>
+<p>✅ O servidor deve manter um log em arquivo dos clientes que se conectaram, contendo os endereços IP e a data e hora de conexão.</p>
 
 <h2>Para envio de mensagens de textos</h2>
 
@@ -24,7 +24,7 @@
 
 <h2>Para rodar</h2>
 
-<code>javac ChatServer.java ClientHandler.java</code>
+<code>javac ChatServer.java ClientHandler.java ServerLogger.java</code>
 <p/>
 <code>java com.chatapp.server.ChatServer</code>
 <p>para entrar como usuário: </p>
