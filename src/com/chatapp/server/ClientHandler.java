@@ -28,7 +28,7 @@ public class ClientHandler extends Thread {
             ChatServer.clientes.put(nome, this);
 
             String ip = socket.getInetAddress().getHostAddress();
-            System.out.println("Cliente conectado: " + nome + " - IP: " + ip);
+            System.out.println("Usuário conectado: " + nome + " - IP: " + ip);
             logger.logClientConnection(nome, ip);
 
             Object obj;
@@ -43,7 +43,7 @@ public class ClientHandler extends Thread {
             }
 
         } catch (Exception e) {
-            System.err.println("Conexão encerrada com cliente: " + nome);
+            System.err.println("Conexão encerrada com usuário: " + nome);
         } finally {
             encerrarConexao();
         }
@@ -51,7 +51,7 @@ public class ClientHandler extends Thread {
 
     private void processarMensagemTexto(Message msg) {
         if (msg.getConteudo().equalsIgnoreCase("/sair")) {
-            encerrarConexao();
+            return;
         } else if (msg.getConteudo().equalsIgnoreCase("/users")) {
             listarUsuarios();
         } else {
@@ -105,7 +105,6 @@ public class ClientHandler extends Thread {
         try {
             if (nome != null) {
                 ChatServer.clientes.remove(nome);
-                System.out.println("Cliente desconectado: " + nome);
                 logger.logClientDisconnection(nome);
             }
             socket.close();
