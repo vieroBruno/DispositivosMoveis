@@ -59,11 +59,9 @@ public class ClientHandler extends Thread {
             if (destino != null) {
                 destino.enviarMensagem(msg);
             } else {
-                enviarMensagem(new Message(Message.Type.TEXT, "Servidor", nome) {
-                    {
-                        setConteudo("Usuário não encontrado: " + msg.getDestinatario());
-                    }
-                });
+                Message resposta = new Message(Message.Type.TEXT, "Servidor", nome);
+                resposta.setConteudo("Usuário não encontrado: " + msg.getDestinatario());
+                enviarMensagem(resposta);
             }
         }
     }
@@ -73,11 +71,9 @@ public class ClientHandler extends Thread {
         if (destino != null) {
             destino.enviarMensagem(msg);
         } else {
-            enviarMensagem(new Message(Message.Type.TEXT, "Servidor", nome) {
-                {
-                    setConteudo("Usuário não encontrado para envio de arquivo: " + msg.getDestinatario());
-                }
-            });
+            Message resposta = new Message(Message.Type.TEXT, "Servidor", nome);
+            resposta.setConteudo("Usuário não encontrado: " + msg.getDestinatario());
+            enviarMensagem(resposta);
         }
     }
 
